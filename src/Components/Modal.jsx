@@ -82,7 +82,7 @@ const Modal = ({ isOpen, onClose, memory }) => {
               transition={{ delay: 0.5, duration: 1 }}
               className="mt-4 text-center bg-pink-100 rounded-xl p-4 shadow-inner h-48"
             >
-              <p className="text-lg font-medium">
+              <p className="text-lg font-medium text-center">
                 Este año fue especial porque vivimos momentos únicos que
                 marcaron nuestra historia. 💕
               </p>
