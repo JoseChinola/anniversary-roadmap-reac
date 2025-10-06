@@ -1,84 +1,9 @@
 import { motion, useMotionValue, animate } from "framer-motion";
 import React, { useRef, useEffect, useState } from "react";
 import Modal from "./Modal";
+import { memories } from '../Data/Memories'
 
-const memories = [
-  {
-    year: "2018",
-    text: "El inicio de nuestra historia 💖",
-    images: [
-      "https://picsum.photos/600/400?random=1",
-      "https://picsum.photos/600/400?random=2",
-      "https://picsum.photos/600/400?random=3",
-      "https://picsum.photos/600/400?random=1",
-      "https://picsum.photos/600/400?random=2",
-      "https://picsum.photos/600/400?random=3",
-    ],
-  },
-  {
-    year: "2019",
-    text: "Nuestro primer viaje juntos ✈️",
-    images: [
-      "https://picsum.photos/600/400?random=4",
-      "https://picsum.photos/600/400?random=5",
-      "https://picsum.photos/600/400?random=6",
-    ],
-  },
-  {
-    year: "2020",
-    text: "Momentos difíciles, pero unidos siempre 💪",
-    images: [
-      "https://picsum.photos/600/400?random=7",
-      "https://picsum.photos/600/400?random=8",
-      "https://picsum.photos/600/400?random=9",
-    ],
-  },
-  {
-    year: "2021",
-    text: "Nuevas aventuras y sueños 🌎",
-    images: [
-      "https://picsum.photos/600/400?random=10",
-      "https://picsum.photos/600/400?random=11",
-      "https://picsum.photos/600/400?random=12",
-    ],
-  },
-  {
-    year: "2022",
-    text: "Creciendo juntos día a día 🌱",
-    images: [
-      "https://picsum.photos/600/400?random=13",
-      "https://picsum.photos/600/400?random=14",
-      "https://picsum.photos/600/400?random=15",
-    ],
-  },
-  {
-    year: "2023",
-    text: "Un amor más fuerte que nunca ❤️",
-    images: [
-      "https://picsum.photos/600/400?random=16",
-      "https://picsum.photos/600/400?random=17",
-      "https://picsum.photos/600/400?random=18",
-    ],
-  },
-  {
-    year: "2024",
-    text: "Un amor más fuerte que nunca ❤️",
-    images: [
-      "https://picsum.photos/600/400?random=16",
-      "https://picsum.photos/600/400?random=17",
-      "https://picsum.photos/600/400?random=18",
-    ],
-  },
-  {
-    year: "2025",
-    text: "Celebrando 7 años de amor 🥂",
-    images: [
-      "https://picsum.photos/600/400?random=19",
-      "https://picsum.photos/600/400?random=20",
-      "https://picsum.photos/600/400?random=21",
-    ],
-  },
-];
+
 
 const Timeline = () => {
   const containerRef = useRef(null);
@@ -133,13 +58,11 @@ const Timeline = () => {
     const w = size.width;
     const h = size.height;
     if (isMobile) {
-      return `M ${w * 0.5} ${h * 0.05} Q ${w * 0.1} ${h * 0.25}, ${w * 0.5} ${
-        h * 0.5
-      } T ${w * 0.5} ${h * 0.95}`;
+      return `M ${w * 0.5} ${h * 0.05} Q ${w * 0.1} ${h * 0.25}, ${w * 0.5} ${h * 0.5
+        } T ${w * 0.5} ${h * 0.95}`;
     } else {
-      return `M ${w * 0.05} ${h * 0.5} Q ${w * 0.25} ${h * 0.1}, ${w * 0.5} ${
-        h * 0.5
-      } T ${w * 0.75} ${h * 0.5} T ${w * 0.95} ${h * 0.5}`;
+      return `M ${w * 0.05} ${h * 0.5} Q ${w * 0.25} ${h * 0.1}, ${w * 0.5} ${h * 0.5
+        } T ${w * 0.75} ${h * 0.5} T ${w * 0.95} ${h * 0.5}`;
     }
   };
 
@@ -168,30 +91,34 @@ const Timeline = () => {
   const title = "Haz clicken los puntos";
 
   return (
-    <section className="relative py-32 bg-gradient-to-b from-pink-50 to-white">
+    <section id="timeline" className="relative py-32 bg-gradient-to-t from-pink-50 to-white">
       <div className="max-w-4xl mx-auto text-center">
         <motion.h1
           className="text-pink-500 text-5xl md:text-7xl font-extrabold leading-tight drop-shadow-2xl"
           initial="hidden"
           animate="visible"
         >
-          {title.split("").map((char, idx) => (
-            <motion.span
-              key={idx}
-              className="inline-block"
-              variants={{
-                hidden: { opacity: 0, y: -20, rotate: -10 },
-                visible: { opacity: 1, y: 0, rotate: 0 },
-              }}
-              transition={{
-                delay: idx * 0.05,
-                type: "spring",
-                stiffness: 300,
-                damping: 20,
-              }}
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
+          {title.split(" ").map((word, wordIdx) => (
+            <span key={wordIdx} className="inline-block mr-2">
+              {word.split("").map((char, charIdx) => (
+                <motion.span
+                  key={charIdx}
+                  className="inline-block"
+                  variants={{
+                    hidden: { opacity: 0, y: -20, rotate: -10 },
+                    visible: { opacity: 1, y: 0, rotate: 0 },
+                  }}
+                  transition={{
+                    delay: (wordIdx * word.length + charIdx) * 0.05,
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
           ))}
         </motion.h1>
 
@@ -201,8 +128,7 @@ const Timeline = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.8 }}
         >
-          Un viaje visual por nuestros 7 años: fotos, recuerdos y momentos que
-          marcaron nuestra historia.
+          Para ver nuestro recorrido
         </motion.p>
       </div>
 
@@ -243,11 +169,10 @@ const Timeline = () => {
               className="w-8 h-8 bg-pink-500 rounded-full border-4 border-white shadow-lg hover:bg-pink-600 transition-colors"
             />
             <motion.span
-              className={`absolute font-bold text-pink-700 ${
-                isMobile
-                  ? "left-10 top-1/2 -translate-y-1/2"
-                  : "left-1/2 -translate-x-1/2 -mt-10"
-              }`}
+              className={`absolute font-bold text-pink-700 ${isMobile
+                ? "left-10 top-1/2 -translate-y-1/2"
+                : "left-1/2 -translate-x-1/2 -mt-10"
+                }`}
               initial={{ y: -10, opacity: 0 }}
               animate={{
                 y: idx <= currentIndex ? 0 : -10,

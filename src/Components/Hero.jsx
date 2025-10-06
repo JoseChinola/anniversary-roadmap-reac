@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const Hero = () => {
-  const title = "7 Años Juntos";
+  const title = "8 Años Juntos";
   return (
     <section
       id="hero"
@@ -76,7 +76,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
           >
-            Un viaje visual por nuestros 7 años: fotos, recuerdos y momentos que
+            Un viaje visual por nuestros 8 años: fotos, recuerdos y momentos que
             marcaron nuestra historia.
           </motion.p>
 
