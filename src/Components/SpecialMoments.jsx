@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Modal from "./Modal";
-import { specialMoments } from '../Data/specialMoments'
-
+import { specialMoments } from "../Data/specialMoments";
+import Confetti from "../utils/confetti";
 
 // ❤️ corazones flotantes románticos
 const FloatingHearts = () => {
@@ -35,16 +35,17 @@ const FloatingHearts = () => {
 const SpecialMoments = () => {
   const [selectedMoment, setSelectedMoment] = useState(null);
 
-  const title = "Momentos Especiales"
+  const title = "Momentos Especiales";
   return (
     <section className="relative py-28 bg-gradient-to-b from-pink-50 via-pink-100 to-white overflow-hidden">
+      <Confetti />
+
       <div className="max-w-5xl mx-auto text-center mb-8">
         <motion.h1
           className="text-pink-500 text-5xl md:text-7xl font-extrabold leading-tight drop-shadow-2xl"
           initial="hidden"
           animate="visible"
         >
-
           <motion.span
             className="inline-block"
             initial={{ scale: 0 }}
@@ -106,10 +107,11 @@ const SpecialMoments = () => {
             transition={{ duration: 0.8, delay: idx * 0.2 }}
             onClick={() => setSelectedMoment(moment)}
           >
-
             {/* Imagen */}
             <motion.img
-              src={Array.isArray(moment.images) ? moment.images[0] : moment.images}
+              src={
+                Array.isArray(moment.images) ? moment.images[0] : moment.images
+              }
               alt={moment.title}
               className="w-full h-64 object-cover rounded-xl transition-transform duration-700 group-hover:scale-110"
             />
@@ -121,6 +123,7 @@ const SpecialMoments = () => {
               </h3>
               <FloatingHearts />
               <p className="text-white/90 text-sm">{moment.text}</p>
+              <Confetti />
             </div>
 
             {/* Overlay Móvil (scroll + corazones) */}
