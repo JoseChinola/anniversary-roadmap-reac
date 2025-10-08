@@ -114,11 +114,12 @@ const Hero = () => {
         <div className="mt-12 flex justify-center">
           <div className="relative w-full max-w-4xl h-64 md:h-96">
             <motion.img
-              src="https://picsum.photos/seed/pic1/600/400"
+              src="fotos/Hero/hero1.jpg"
               alt="Collage 1"
               className="absolute left-0 top-6 w-40 md:w-56 rounded-xl shadow-2xl object-cover"
               whileHover={{ scale: 1.03, rotate: -3 }}
               transition={{ type: "spring", stiffness: 120 }}
+              style={{ width: "260px", height: "170px" }}
             />
 
             <motion.img
@@ -130,11 +131,12 @@ const Hero = () => {
             />
 
             <motion.img
-              src="https://picsum.photos/seed/pic3/600/400"
+              src="fotos/Hero/hero3.jpg"
               alt="Collage 3"
               className="absolute right-0 top-12 w-40 md:w-56 rounded-xl shadow-2xl object-cover"
               whileHover={{ scale: 1.03, rotate: -2 }}
               transition={{ type: "spring", stiffness: 120 }}
+              style={{ width: "290px", height: "180px" }}
             />
           </div>
         </div>
@@ -153,9 +155,8 @@ const Hero = () => {
           ></path>
         </svg>
       </div>
-      
     </section>
   );
 };
 
-export default Hero; 
+export default Hero;
