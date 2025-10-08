@@ -98,13 +98,17 @@ const Hero = () => {
               Descubre nuestro viaje
             </button>
 
-            <a
-              href="#gallery"
+            <button
+              onClick={() =>
+                document
+                  .getElementById("gallery")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
+              }
               className="px-4 py-3 rounded-full border border-white/30 text-white hover:bg-white/10 transition"
               aria-label="Ir a la galería"
             >
               Ver galería
-            </a>
+            </button>
           </motion.div>
         </div>
         <div className="mt-12 flex justify-center">
@@ -149,8 +153,9 @@ const Hero = () => {
           ></path>
         </svg>
       </div>
+      
     </section>
   );
 };
 
-export default Hero;
+export default Hero; 
