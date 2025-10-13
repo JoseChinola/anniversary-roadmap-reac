@@ -123,7 +123,7 @@ const Hero = () => {
             />
 
             <motion.img
-              src="https://picsum.photos/seed/pic2/600/400"
+              src="fotos/Hero/hero2.jpg"
               alt="Collage 2"
               className="absolute left-1/3 top-0 w-56 md:w-72 rounded-2xl shadow-2xl object-cover border-4 border-white/10"
               whileHover={{ scale: 1.04, rotate: 2 }}
